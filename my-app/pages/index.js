@@ -7,7 +7,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    window?.webkit?.messageHandlers?.hideNavbar?.postMessage?.();
+    window?.webkit?.messageHandlers?.hideNavbar?.postMessage();
     window?.native?.hideNavbar();
 
     function apiSimulation() {
