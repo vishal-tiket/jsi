@@ -7,7 +7,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window?.webkit?.messageHandlers?.hideNavbar?.postMessage('');
+    window?.webkit?.messageHandlers?.hideNavbar?.postMessage("");
     window?.native?.hideNavbar();
 
     function apiSimulation() {
@@ -17,6 +17,32 @@ export default function Home() {
     }
 
     // apiSimulation();
+
+    const handleResize = () => {
+      // Get the safe area values using JavaScript
+      const safeAreaTop = window.safeAreaInsets?.top || 0;
+      const safeAreaBottom = window.safeAreaInsets?.bottom || 0;
+
+      // Update the CSS custom properties
+      document.documentElement.style.setProperty(
+        "--safe-area-inset-top",
+        `${safeAreaTop}px`
+      );
+      document.documentElement.style.setProperty(
+        "--safe-area-inset-bottom",
+        `${safeAreaBottom}px`
+      );
+    };
+
+    handleResize();
+
+    // Listen to the resize event to handle orientation changes
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      // Cleanup the event listener
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   if (isLoading) {
@@ -49,18 +75,18 @@ export default function Home() {
           width: "100%",
           display: "flex",
           alignItems: "center",
-          background: '#0070f3',
-          position: 'fixed',
-          top: '0',
-          left: '0',
-          padding: '20px',
-          color: 'white'
+          background: "#0070f3",
+          position: "fixed",
+          top: "0",
+          left: "0",
+          padding: "20px",
+          color: "white",
         }}
       >
         Home Page
       </div>
 
-      <main className={styles.main} style={{paddingTop: '128px'}}>
+      <main className={styles.main} style={{ paddingTop: "128px" }}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
