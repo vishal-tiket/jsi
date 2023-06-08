@@ -13,7 +13,7 @@ export default function Home() {
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 500);
     }
 
     apiSimulation();
