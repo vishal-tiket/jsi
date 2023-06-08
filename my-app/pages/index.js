@@ -48,7 +48,7 @@ export default function Home() {
           width: "100%",
           display: "flex",
           alignItems: "center",
-          background: 'black',
+          background: '#0070f3',
           position: 'fixed',
           top: '0',
           left: '0',
