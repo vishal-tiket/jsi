@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window?.webkit?.messageHandlers?.hideNavbar?.postMessage();
@@ -16,7 +16,7 @@ export default function Home() {
       }, 500);
     }
 
-    apiSimulation();
+    // apiSimulation();
   }, []);
 
   if (isLoading) {
