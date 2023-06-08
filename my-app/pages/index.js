@@ -58,7 +58,7 @@ export default function Home() {
       <div className={styles.safe_area}></div>
       <div className={styles.header}>Home Page</div>
 
-      <main className={styles.main} style={{ paddingTop: `${128 + safeAreaInsets?.top}px` }}>
+      <main className={styles.main} style={{ paddingTop: `${118 + safeAreaInsets?.top}px` }}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.JS</a>
         </h1>
