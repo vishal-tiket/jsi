@@ -139,19 +139,6 @@
   }
 }
 
-@supports (padding-top: env(--safe-area-inset-top)) {
-  .container {
-    padding-top: env(--safe-area-inset-top);
-    padding-bottom: env(--safe-area-inset-bottom);
-  }
-}
-
-@supports (top: env(--safe-area-inset-top)) {
-  .header {
-    top: constant(--safe-area-inset-top);
-  }
-}
-
 @media (orientation: landscape) {
   .container {
     padding: 0 calc(var(--safe-area-inset-right) * 1px) 0
