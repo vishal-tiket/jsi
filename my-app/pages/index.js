@@ -48,17 +48,18 @@ export default function Home() {
           width: "100%",
           display: "flex",
           alignItems: "center",
-          background: 'grey',
+          background: 'black',
           position: 'fixed',
           top: '0',
           left: '0',
-          padding: '20px'
+          padding: '20px',
+          color: 'white'
         }}
       >
         Home Page
       </div>
 
-      <main className={styles.main}>
+      <main className={styles.main} style={{paddingTop: '128px'}}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
