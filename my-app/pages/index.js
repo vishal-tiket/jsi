@@ -4,21 +4,21 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     window?.webkit?.messageHandlers?.hideNavbar?.postMessage("");
     window?.native?.hideNavbar();
-    setTimeout(() => {
-      setIsLoading(true);
-    }, [50]);
+    // setTimeout(() => {
+    //   setIsLoading(true);
+    // }, [50]);
 
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
         setShowContent(true);
-      }, 2500);
+      }, 2000);
     }
 
     apiSimulation();
