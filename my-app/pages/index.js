@@ -12,7 +12,7 @@ export default function Home() {
     window?.native?.hideNavbar();
     setTimeout(() => {
       setIsLoading(true);
-    }, [200]);
+    }, [100]);
 
     function apiSimulation() {
       setTimeout(() => {
