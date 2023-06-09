@@ -12,13 +12,13 @@ export default function Home() {
     window?.native?.hideNavbar();
     setTimeout(() => {
       setIsLoading(true);
-    }, [50]);
+    }, [100]);
 
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
         setShowContent(true);
-      }, 2000);
+      }, 2100);
     }
 
     apiSimulation();
