@@ -5,7 +5,7 @@
 }
 
 .safe_area {
-  height: calc(54 * 1px);
+  height: calc(var(--safe-area-inset-top, 0) * 1px);
   background-color: #0070f3;
   position: fixed;
   top: 0;

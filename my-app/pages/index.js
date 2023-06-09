@@ -26,7 +26,7 @@ export default function Home() {
     window?.webkit?.messageHandlers?.callNativeJSI?.postMessage(
       JSON.stringify({ command: "hideNavbar" })
     );
-    window?.callNativeJSI?.postMessage(
+    window?.callGenericNativeJSI?.postMessage(
       JSON.stringify({ command: "hideNavbar" })
     );
 
