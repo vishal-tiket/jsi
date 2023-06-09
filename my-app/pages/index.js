@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     window?.webkit?.messageHandlers?.hideNavbar?.postMessage("");
@@ -13,10 +13,10 @@ export default function Home() {
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 2000);
     }
 
-    // apiSimulation();
+    apiSimulation();
   }, []);
 
   if (isLoading) {
