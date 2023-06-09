@@ -3,11 +3,12 @@
   border: none;
   height: 40px;
   color: white;
-  font-size: 19px;
+  font-size: 17px;
   width: 40px;
   text-decoration: none;
   display: flex;
-  align-items: center;
+  padding: 8.8px 0 0 0;
+  margin-right: 10px;
   justify-content: center;
 }
 
