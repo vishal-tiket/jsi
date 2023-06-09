@@ -71,7 +71,13 @@ export default function Home() {
         {showHeader ? (
           <>
             <div className={styles.safe_area}></div>
-            <div className={styles.header}>Home Page</div>
+            <div className={styles.header}>
+              <a
+                className={styles.backButton}
+                href="https://nextjs.org/docs"
+              >{`<`}</a>
+              <span>Home Page</span>
+            </div>
             {!!isLoading && (
               <div
                 style={{
@@ -90,7 +96,13 @@ export default function Home() {
           <>
             <main className={styles.main}>
               <div className={styles.safe_area}></div>
-              <div className={styles.header}>Home Page</div>
+              <div className={styles.header}>
+                <a
+                  className={styles.backButton}
+                  href="https://nextjs.org/docs"
+                >{`<`}</a>
+                <span>Home Page</span>
+              </div>
               <h1 className={styles.title}>
                 Welcome to <a href="https://nextjs.org">Next.JS</a>
               </h1>

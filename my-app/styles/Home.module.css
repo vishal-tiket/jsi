@@ -1,3 +1,16 @@
+.backButton {
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  color: white;
+  font-size: 19px;
+  width: 40px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   padding: 0 2rem;
   padding-top: calc(var(--safe-area-inset-top, 0) * 1px);
