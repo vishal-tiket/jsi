@@ -8,17 +8,9 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
-  useEffect(() => {
-    window?.webkit?.messageHandlers?.hideNavbar?.postMessage("");
-    window?.native?.hideNavbar();
-    setTimeout(() => {
-      setShowHeader(true);
-    }, [20]);
-
-    setTimeout(() => {
-      setIsLoading(true);
-    }, [100]);
-
+  const callback = (event) => {
+    setShowHeader(true);
+    setIsLoading(true);
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
@@ -28,6 +20,39 @@ export default function Home() {
     }
 
     apiSimulation();
+  };
+
+  useEffect(() => {
+    window?.webkit?.messageHandlers?.callNativeJSI?.postMessage(
+      JSON.stringify({ command: "hideNavbar" })
+    );
+    window?.callNativeJSI?.postMessage(
+      JSON.stringify({ command: "hideNavbar" })
+    );
+
+    window.addEventListener("nativeJSICallback", callback);
+
+    // setTimeout(() => {
+    //   setShowHeader(true);
+    // }, [20]);
+
+    // setTimeout(() => {
+    //   setIsLoading(true);
+    // }, [100]);
+
+    // function apiSimulation() {
+    //   setTimeout(() => {
+    //     setIsLoading(false);
+    //     setShowContent(true);
+    //     setShowHeader(false);
+    //   }, 2000);
+    // }
+
+    // apiSimulation();
+
+    return () => {
+      window.removeEventListener("nativeJSICallback", callback);
+    };
   }, []);
 
   if (showContent || showHeader) {
