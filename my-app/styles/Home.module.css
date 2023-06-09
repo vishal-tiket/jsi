@@ -1,11 +1,11 @@
 .container {
   padding: 0 2rem;
-  padding-top: calc(var(--safe-area-inset-top) * 1px);
-  padding-bottom: calc(var(--safe-area-inset-bottom) * 1px);
+  padding-top: calc(env(safe-area-inset-top) * 1px);
+  padding-bottom: calc(env(safe-area-inset-bottom) * 1px);
 }
 
 .safe_area {
-  height: calc(var(--safe-area-inset-top) * 1px);
+  height: calc(env(safe-area-inset-top) * 1px);
   background-color: #0070f3;
   position: fixed;
   top: 0;
@@ -20,7 +20,7 @@
   align-items: center;
   background: #0070f3;
   position: fixed;
-  top: calc(var(--safe-area-inset-top) * 1px);
+  top: calc(env(safe-area-inset-top) * 1px);
   left: 0;
   padding: 20px;
   color: white;
@@ -28,7 +28,7 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 7rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -141,16 +141,16 @@
 
 @media (orientation: landscape) {
   .container {
-    padding: 0 calc(var(--safe-area-inset-right) * 1px) 0
-      calc(var(--safe-area-inset-left) * 1px);
+    padding: 0 calc(env(safe-area-inset-right) * 1px) 0
+      calc(env(safe-area-inset-left) * 1px);
     padding-top: 0;
     padding-bottom: 0;
   }
   .header {
     top: 0;
     padding-top: 20px;
-    padding-right: calc((var(--safe-area-inset-right) * 1px) + 40px);
+    padding-right: calc((env(safe-area-inset-right) * 1px) + 40px);
     padding-bottom: 20px;
-    padding-left: calc((var(--safe-area-inset-left) * 1px) + 40px);
+    padding-left: calc((env(safe-area-inset-left) * 1px) + 40px);
   }
 }
