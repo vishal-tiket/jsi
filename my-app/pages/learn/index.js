@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
@@ -27,10 +27,10 @@ export default function Home() {
 
   useEffect(() => {
     window?.webkit?.messageHandlers?.callNativeJSI?.postMessage(
-      JSON.stringify({ command: "hideNavbar" })
+      JSON.stringify({ command: "showNavbar" })
     );
     window?.generic?.callGenericNativeJSI(
-      JSON.stringify({ command: "hideNavbar" })
+      JSON.stringify({ command: "showNavbar" })
     );
 
     window.addEventListener("nativeJSICallback", callback);
@@ -71,38 +71,25 @@ export default function Home() {
           />
         </Head>
 
-        {showHeader ? (
-          <>
-            <div className={styles.safe_area}></div>
-            <div className={styles.header}>
-              <div className={styles.backButton} onClick={() => router.back()}>{`<`}</div>
-              <span>Documentation</span>
-            </div>
-            {!!isLoading && (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "white",
-                }}
-              >
-                Loading ...
-              </div>
-            )}
-          </>
+        {!!isLoading ? (
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "white",
+            }}
+          >
+            Loading ...
+          </div>
         ) : (
           <>
             <main className={styles.main}>
               <div className={styles.safe_area}></div>
-              <div className={styles.header}>
-              <div className={styles.backButton} onClick={() => router.back()}>{`<`}</div>
-                <span>Documentation</span>
-              </div>
               <h1 className={styles.title} style={{ color: "white" }}>
-                Next.JS <a href="https://nextjs.org">Docs</a>
+                Next.JS <a href="https://nextjs.org">Courses</a>
               </h1>
 
               <p className={styles.description} style={{ color: "white" }}></p>
