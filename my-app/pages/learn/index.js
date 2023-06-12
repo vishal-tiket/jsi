@@ -87,7 +87,7 @@ export default function Home() {
         ) : (
           <>
             <main className={styles.main}>
-              <div className={styles.safe_area}></div>
+              <div className={styles.safe_area} style={{background: 'black'}}></div>
               <h1 className={styles.title} style={{ color: "white" }}>
                 Next.JS <a href="https://nextjs.org">Courses</a>
               </h1>
