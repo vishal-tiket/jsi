@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { jsiNavbarHandler } from "./helper";
+import { jsiNavbarHandler } from "../helper/jsi";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
