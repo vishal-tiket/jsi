@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { useRouter } from "next/router";
+import { jsiNavbarHandler } from "../helper";
 
 export default function Home() {
   const router = useRouter();
@@ -26,32 +27,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    window?.webkit?.messageHandlers?.callNativeJSI?.postMessage(
-      JSON.stringify({ command: "showNavbar" })
-    );
-    window?.generic?.callGenericNativeJSI(
-      JSON.stringify({ command: "showNavbar" })
-    );
+    jsiNavbarHandler(false)
 
     window.addEventListener("nativeJSICallback", callback);
-
-    // setTimeout(() => {
-    //   setShowHeader(true);
-    // }, [20]);
-
-    // setTimeout(() => {
-    //   setIsLoading(true);
-    // }, [100]);
-
-    // function apiSimulation() {
-    //   setTimeout(() => {
-    //     setIsLoading(false);
-    //     setShowContent(true);
-    //     setShowHeader(false);
-    //   }, 2000);
-    // }
-
-    // apiSimulation();
 
     return () => {
         window.removeEventListener("nativeJSICallback", callback);

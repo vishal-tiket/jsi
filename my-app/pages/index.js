@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { jsiNavbarHandler } from "./helper";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,33 +25,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    window?.webkit?.messageHandlers?.callNativeJSI?.postMessage(
-      JSON.stringify({ command: "hideNavbar" })
-    );
-    window?.generic?.callGenericNativeJSI(
-      JSON.stringify({ command: "hideNavbar" })
-    );
+    jsiNavbarHandler(true);
 
     window.addEventListener("nativeJSICallback", callback);
-    alert('Call JSI');
-
-    // setTimeout(() => {
-    //   setShowHeader(true);
-    // }, [20]);
-
-    // setTimeout(() => {
-    //   setIsLoading(true);
-    // }, [100]);
-
-    // function apiSimulation() {
-    //   setTimeout(() => {
-    //     setIsLoading(false);
-    //     setShowContent(true);
-    //     setShowHeader(false);
-    //   }, 2000);
-    // }
-
-    // apiSimulation();
 
     return () => {
       window.removeEventListener("nativeJSICallback", callback);
