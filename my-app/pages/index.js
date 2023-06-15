@@ -17,7 +17,7 @@ export default function Home() {
     const { command, error, response } = jsiResponse || {};
 
     if (error?.message) {
-      setError(message);
+      setError(error?.message || 'JSI failed');
       return;
     }
 
