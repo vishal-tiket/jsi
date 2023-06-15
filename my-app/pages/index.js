@@ -20,7 +20,7 @@ export default function Home() {
       }, 2000);
     }
 
-    alert(event?.detail);
+    alert(JSON.stringify(event?.detail));
     const jsiResponse =
       (event?.data && JSON.parse(event?.data)) ||
       (event?.detail && JSON.parse(event?.detail));
@@ -39,7 +39,7 @@ export default function Home() {
       apiSimulation();
       return;
     }
-    alert('nothing worked');
+    alert("nothing worked");
   };
 
   useEffect(() => {
