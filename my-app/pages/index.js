@@ -10,6 +10,14 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
+  const sanitizeJSICallbackArg = (ev) => {
+    const maybeCustomEvent = ev;
+    if (maybeCustomEvent.detail) {
+      return maybeCustomEvent;
+    }
+    return;
+  };
+
   const callback = (event) => {
     alert(JSON.stringify(event))
     setShowHeader(true);
@@ -25,19 +33,29 @@ export default function Home() {
     apiSimulation();
   };
 
+  const jsiCustomEventCallback = (callback) => {
+    const jsiCallback = sanitizeJSICallbackArg(ev);
+    // TODO: remove after production-ready
+    console.log(`JSI Custom Event Fired :: ${JSON.stringify(jsiCallback?.detail)}`);
+    if (!jsiCallback) {
+      console.error('JSI callback response is not a valid custom event callback!');
+      return;
+    }
+    callback(jsiCallback);
+  };
+
   useEffect(() => {
     jsiNavbarHandler(true);
 
-    window.addEventListener("nativeJSICallback", callback);
+    window.addEventListener("nativeJSICallback", jsiCustomEventCallback(callback));
+    
     window.callNativeJSI.onmessage = function(data) {
       callback(data)
     }
-    window.addEventListener("message", callback);
 
 
     return () => {
       window.removeEventListener("nativeJSICallback", callback);
-      window.removeEventListener("message", callback);
     };
   }, []);
 
