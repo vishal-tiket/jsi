@@ -13,11 +13,11 @@ export default function Home() {
 
   const callback = (event) => {
     alert(JSON.stringify(event?.detail));
-    const jsiResponse = JSON.parse(event?.data);
+    const jsiResponse = JSON.parse(event?.data || event?.detail);
     const { command, error, response } = jsiResponse || {};
 
     if (error?.message) {
-      setError(error?.message || 'JSI failed');
+      setError(error?.message || "JSI failed");
       return;
     }
 
