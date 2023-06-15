@@ -12,7 +12,6 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
-    alert(JSON.stringify(event?.detail));
 
     function apiSimulation() {
       setTimeout(() => {
