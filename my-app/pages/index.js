@@ -103,6 +103,17 @@ export default function Home() {
                   </p>
                 </Link>
 
+                <button
+                  onClick={() => {
+                    const event =  createEvent("nativeJSICallback", {
+                      bubbles: true,
+                    });
+                    window.dispatchEvent(event);
+                  }}
+                >
+                  Click me
+                </button>
+
                 <Link href="/learn" className={styles.card}>
                   <h2>Learn &rarr;</h2>
                   <p>
