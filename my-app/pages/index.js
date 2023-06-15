@@ -37,7 +37,10 @@ export default function Home() {
         return;
       }
     } else {
-      if (event.detail.command === "toggleNavbarVisibility") {
+      if (
+        event.detail.command === "toggleNavbarVisibility" &&
+        event.detail.response
+      ) {
         setShowHeader(true);
         setIsLoading(true);
         apiSimulation();
