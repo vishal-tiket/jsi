@@ -9,29 +9,38 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
+  const [error, setError] = useState("");
 
   const callback = (event) => {
     alert(JSON.stringify(event));
-    setShowHeader(true);
-    setIsLoading(true);
-    function apiSimulation() {
-      setTimeout(() => {
-        setIsLoading(false);
-        setShowContent(true);
-        setShowHeader(false);
-      }, 2000);
+    const jsiResponse = JSON.parse(event?.data);
+    const { command, error, response } = jsiResponse || {};
+
+    if (error?.message) {
+      setError(message);
+      return;
     }
 
-    apiSimulation();
+    if (command === "toggleNavbarVisibility" && response) {
+      setShowHeader(true);
+      setIsLoading(true);
+      function apiSimulation() {
+        setTimeout(() => {
+          setIsLoading(false);
+          setShowContent(true);
+          setShowHeader(false);
+        }, 2000);
+      }
+
+      apiSimulation();
+      return;
+    }
   };
 
   useEffect(() => {
     jsiNavbarHandler(true);
 
     window.addEventListener("nativeJSICallback", callback);
-    window.addEventListener("message", (event) => {
-      alert(event?.data);
-    });
 
     if (window?.callNativeJSI) {
       window.callNativeJSI.onmessage = function (data) {
@@ -43,6 +52,22 @@ export default function Home() {
       window.removeEventListener("nativeJSICallback", callback);
     };
   }, []);
+
+  if (error) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {error}
+      </div>
+    );
+  }
 
   if (showContent || showHeader) {
     return (
