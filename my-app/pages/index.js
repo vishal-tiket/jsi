@@ -35,17 +35,6 @@ export default function Home() {
       apiSimulation();
       return;
     }
-    // }
-    // else {
-    //   if (
-    //     event.detail.command === "toggleNavbarVisibility" &&
-    //     event.detail.response
-    //   ) {
-    //     setShowHeader(true);
-    //     setIsLoading(true);
-    //     apiSimulation();
-    //   }
-    // }
   };
 
   useEffect(() => {
