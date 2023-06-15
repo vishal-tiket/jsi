@@ -12,7 +12,6 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
-
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
@@ -39,7 +38,9 @@ export default function Home() {
         return;
       }
     } else {
-      alert("nothing worked");
+      setShowHeader(true);
+      setIsLoading(true);
+      apiSimulation();
     }
   };
 
