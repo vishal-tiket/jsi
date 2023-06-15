@@ -36,7 +36,6 @@ export default function Home() {
       alert(event?.detail);
       setShowHeader(true);
       setIsLoading(true);
-
       apiSimulation();
       return;
     }
