@@ -8,7 +8,7 @@ export const jsiNavbarHandler = (isHidden) => {
     })
   );
 
-  window?.generic?.callGenericNativeJSI(
+  window?.callNativeJSI?.postMessage(
     JSON.stringify({
       command: "toggleNavbarVisibility",
       request: {
