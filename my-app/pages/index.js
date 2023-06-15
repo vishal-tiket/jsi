@@ -29,9 +29,11 @@ export default function Home() {
     jsiNavbarHandler(true);
 
     window.addEventListener("nativeJSICallback", callback);
+    window.addEventListener("message", callback);
 
     return () => {
       window.removeEventListener("nativeJSICallback", callback);
+      window.removeEventListener("message", callback);
     };
   }, []);
 
