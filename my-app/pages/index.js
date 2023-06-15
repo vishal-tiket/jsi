@@ -31,16 +31,17 @@ export default function Home() {
       }
 
       if (command === "toggleNavbarVisibility" && response) {
-        alert(event?.detail);
         setShowHeader(true);
         setIsLoading(true);
         apiSimulation();
         return;
       }
     } else {
-      setShowHeader(true);
-      setIsLoading(true);
-      apiSimulation();
+      if (event.detail.command === "toggleNavbarVisibility") {
+        setShowHeader(true);
+        setIsLoading(true);
+        apiSimulation();
+      }
     }
   };
 
