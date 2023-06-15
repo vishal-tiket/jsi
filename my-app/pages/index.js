@@ -20,32 +20,32 @@ export default function Home() {
       }, 2000);
     }
 
-    if (!event?.detail) {
-      const jsiResponse = (event?.data && JSON.parse(event?.data)) || {};
+    const jsiResponse = (event?.data && JSON.parse(event?.data)) || undefined;
 
-      const { command, error, response } = jsiResponse || {};
+    const { command, error, response } = jsiResponse || event.detail || {};
 
-      if (error?.message) {
-        setError(error?.message || "JSI failed");
-        return;
-      }
-
-      if (command === "toggleNavbarVisibility" && response) {
-        setShowHeader(true);
-        setIsLoading(true);
-        apiSimulation();
-        return;
-      }
-    } else {
-      if (
-        event.detail.command === "toggleNavbarVisibility" &&
-        event.detail.response
-      ) {
-        setShowHeader(true);
-        setIsLoading(true);
-        apiSimulation();
-      }
+    if (error?.message) {
+      setError(error?.message || "JSI failed");
+      return;
     }
+
+    if (command === "toggleNavbarVisibility" && response) {
+      setShowHeader(true);
+      setIsLoading(true);
+      apiSimulation();
+      return;
+    }
+    // }
+    // else {
+    //   if (
+    //     event.detail.command === "toggleNavbarVisibility" &&
+    //     event.detail.response
+    //   ) {
+    //     setShowHeader(true);
+    //     setIsLoading(true);
+    //     apiSimulation();
+    //   }
+    // }
   };
 
   useEffect(() => {
