@@ -12,9 +12,11 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
-    alert(JSON.stringify(event?.data));
+    alert(JSON.stringify(event?.detail));
     const jsiResponse = JSON.parse(event?.data);
-    const { command, error, response } = jsiResponse || {};
+    const { command, error, response } = event?.data
+      ? jsiResponse
+      : event?.detail || {};
 
     if (error?.message) {
       setError(error?.message || "JSI failed");
