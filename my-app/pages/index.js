@@ -13,7 +13,7 @@ export default function Home() {
 
   const callback = (event) => {
     alert(JSON.stringify(event?.detail?.command));
-    const jsiResponse = JSON.parse(event?.data || event?.detail);
+    const jsiResponse = JSON.parse(event?.detail);
     const { command, error, response } = jsiResponse || {};
 
     if (error?.message) {
