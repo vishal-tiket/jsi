@@ -29,7 +29,11 @@ export default function Home() {
     jsiNavbarHandler(true);
 
     window.addEventListener("nativeJSICallback", callback);
+    window.callNativeJSI.onmessage = function(data) {
+      callback(data)
+    }
     window.addEventListener("message", callback);
+
 
     return () => {
       window.removeEventListener("nativeJSICallback", callback);
