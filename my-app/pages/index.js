@@ -23,8 +23,8 @@ export default function Home() {
     alert(
       JSON.stringify({
         showContent:
-          event?.detail?.command === "toggleNavbarVisibility" &&
-          event?.detail?.response,
+          !!(event?.detail?.command === "toggleNavbarVisibility") &&
+          !!event?.detail?.response,
       })
     );
     const jsiResponse = JSON.parse(event?.data);
