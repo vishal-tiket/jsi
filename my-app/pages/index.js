@@ -30,9 +30,11 @@ export default function Home() {
 
     window.addEventListener("nativeJSICallback", callback);
 
-    window.callNativeJSI.onmessage = function (data) {
-      callback(data);
-    };
+    if (window?.callNativeJSI) {
+      window.callNativeJSI.onmessage = function (data) {
+        callback(data);
+      };
+    }
 
     // return () => {
     //   window.removeEventListener(
