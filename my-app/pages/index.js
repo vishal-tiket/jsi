@@ -12,6 +12,8 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
+    alert(JSON.stringify(event?.detail));
+
     function apiSimulation() {
       setTimeout(() => {
         setIsLoading(false);
@@ -20,26 +22,26 @@ export default function Home() {
       }, 2000);
     }
 
-    alert(JSON.stringify(event?.detail));
-    const jsiResponse =
-      (event?.data && JSON.parse(event?.data)) ||
-      (event?.detail && JSON.parse(event?.detail));
+    if (!event?.detail) {
+      const jsiResponse = (event?.data && JSON.parse(event?.data)) || {};
 
-    const { command, error, response } = jsiResponse || {};
+      const { command, error, response } = jsiResponse || {};
 
-    if (error?.message) {
-      setError(error?.message || "JSI failed");
-      return;
+      if (error?.message) {
+        setError(error?.message || "JSI failed");
+        return;
+      }
+
+      if (command === "toggleNavbarVisibility" && response) {
+        alert(event?.detail);
+        setShowHeader(true);
+        setIsLoading(true);
+        apiSimulation();
+        return;
+      }
+    } else {
+      alert("nothing worked");
     }
-
-    if (command === "toggleNavbarVisibility" && response) {
-      alert(event?.detail);
-      setShowHeader(true);
-      setIsLoading(true);
-      apiSimulation();
-      return;
-    }
-    alert("nothing worked");
   };
 
   useEffect(() => {
