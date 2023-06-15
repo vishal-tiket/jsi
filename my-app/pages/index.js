@@ -19,11 +19,13 @@ export default function Home() {
       : event?.detail || {};
 
     if (error?.message) {
+      alert(error)
       setError(error?.message || "JSI failed");
       return;
     }
 
     if (command === "toggleNavbarVisibility" && response) {
+      alert(event?.detail)
       setShowHeader(true);
       setIsLoading(true);
       function apiSimulation() {
