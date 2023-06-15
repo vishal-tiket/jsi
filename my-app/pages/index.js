@@ -12,8 +12,8 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
-    alert(event?.detail?.command);
-    const jsiResponse = JSON.parse(event?.detail);
+    alert(JSON.stringify(event?.data));
+    const jsiResponse = JSON.parse(event?.data);
     const { command, error, response } = jsiResponse || {};
 
     if (error?.message) {
