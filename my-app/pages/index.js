@@ -20,20 +20,14 @@ export default function Home() {
       }, 2000);
     }
 
-    alert(
-      JSON.stringify({
-        showContent:
-          !!(event?.detail?.command === "toggleNavbarVisibility") &&
-          !!event?.detail?.response,
-      })
-    );
-    const jsiResponse = JSON.parse(event?.data);
-    const { command, error, response } = event?.data
-      ? jsiResponse
-      : event?.detail || {};
+    alert(event?.detail);
+    const jsiResponse =
+      (event?.data && JSON.parse(event?.data)) ||
+      (event?.detail && JSON.parse(event?.detail));
+
+    const { command, error, response } = jsiResponse || {};
 
     if (error?.message) {
-      alert(error);
       setError(error?.message || "JSI failed");
       return;
     }
@@ -46,6 +40,7 @@ export default function Home() {
       apiSimulation();
       return;
     }
+    alert('nothing worked');
   };
 
   useEffect(() => {
