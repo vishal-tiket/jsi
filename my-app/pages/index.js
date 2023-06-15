@@ -29,6 +29,9 @@ export default function Home() {
     jsiNavbarHandler(true);
 
     window.addEventListener("nativeJSICallback", callback);
+    window.addEventListener("message", (event) => {
+      alert(event?.data);
+    });
 
     if (window?.callNativeJSI) {
       window.callNativeJSI.onmessage = function (data) {
@@ -36,12 +39,9 @@ export default function Home() {
       };
     }
 
-    // return () => {
-    //   window.removeEventListener(
-    //     "nativeJSICallback",
-    //     jsiCustomEventCallback(callback)
-    //   );
-    // };
+    return () => {
+      window.removeEventListener("nativeJSICallback", callback);
+    };
   }, []);
 
   if (showContent || showHeader) {
@@ -102,17 +102,6 @@ export default function Home() {
                     Find in-depth information about Next.js features and API.
                   </p>
                 </Link>
-
-                <button
-                  onClick={() => {
-                    const event =  createEvent("nativeJSICallback", {
-                      bubbles: true,
-                    });
-                    window.dispatchEvent(event);
-                  }}
-                >
-                  Click me
-                </button>
 
                 <Link href="/learn" className={styles.card}>
                   <h2>Learn &rarr;</h2>
