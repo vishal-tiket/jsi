@@ -12,29 +12,33 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const callback = (event) => {
-    alert(JSON.stringify(event?.detail));
+    function apiSimulation() {
+      setTimeout(() => {
+        setIsLoading(false);
+        setShowContent(true);
+        setShowHeader(false);
+      }, 2000);
+    }
+
+    alert(
+      event?.detail?.command === "toggleNavbarVisibility" &&
+        event?.detail?.response
+    );
     const jsiResponse = JSON.parse(event?.data);
     const { command, error, response } = event?.data
       ? jsiResponse
       : event?.detail || {};
 
     if (error?.message) {
-      alert(error)
+      alert(error);
       setError(error?.message || "JSI failed");
       return;
     }
 
     if (command === "toggleNavbarVisibility" && response) {
-      alert(event?.detail)
+      alert(event?.detail);
       setShowHeader(true);
       setIsLoading(true);
-      function apiSimulation() {
-        setTimeout(() => {
-          setIsLoading(false);
-          setShowContent(true);
-          setShowHeader(false);
-        }, 2000);
-      }
 
       apiSimulation();
       return;
