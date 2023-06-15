@@ -11,6 +11,7 @@ export default function Home() {
   const [showHeader, setShowHeader] = useState(false);
 
   const callback = (event) => {
+    alert(JSON.stringify(event))
     setShowHeader(true);
     setIsLoading(true);
     function apiSimulation() {
