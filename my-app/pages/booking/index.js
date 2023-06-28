@@ -1,11 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { Header } from "../../components/header";
+import { Loader } from "../../components/loader";
+import { PageContent } from "../../components/pageContent";
 
-import { Header } from "../components/header";
-import { Loader } from "../components/loader";
-import { PageContent } from "../components/pageContent";
-
-export default function Home() {
+export default function Booking() {
   const [isLoading, setIsLoading] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
@@ -31,11 +30,9 @@ export default function Home() {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
       </Head>
-      <Header title={"Home"} previousUrl={""} />
+      <Header title={"Booking"} previousUrl={"/"} />
       {isLoading && <Loader />}
-      {showContent && (
-        <PageContent title={"Home Page"} urls={["/about", "/booking"]} />
-      )}
+      {showContent && <PageContent title={"Booking Page"} urls={undefined} />}
     </>
   );
 }
